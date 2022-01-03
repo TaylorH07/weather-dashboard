@@ -7,7 +7,6 @@
     <title>Weather Dashboard</title>
 
 
-    <link rel="stylesheet" href="https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}">
 
     <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -20,19 +19,20 @@
   
   
     <main class="flex-row justify-space-between">
-      <div class="col-12 col-md-4">
-        <div class="card">
-          <h3 class="card-header text-uppercase">Search By City</h3>
-          <form id="city-form" class="card-body">
-            <label class="form-label" for="city">Type City</label>
-            <input placeholder="Enter City" />
-            <button type="submit" class="btn">Get Weather</button>
-          </form>
-        </div>
+        
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <h3 class="card-header text-uppercase">Search By City</h3>
+                <form id="city-form" class="card-body">
+                    <label class="form-label" for="city">Type City</label>
+                    <input placeholder="Enter City" />
+                    <button type="submit" class="btn">Get Weather</button>
+                </form>
+            </div>
   
   
-      <div class="col-12 col-md-8">
-        <h2 class="subtitle">Showing Weather for: <span id="city-search-term"></span></h2>
+        <div class="col-12 col-md-8">
+            <h2 class="subtitle">Showing Weather for: <span id="city-search-term"></span></h2>
         <div id="city-container" class="list-group">
   
         </div>
