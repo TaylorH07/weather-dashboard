@@ -78,11 +78,47 @@ var showWeather = function(citySearch, weather){
     
     var lon = weather.coord.lon;
     var lat = weather.coord.lat;
-    getUvIndex(lon, lat);
+    uvIndex(lon, lat);
 
 };
     
 //uv index
+
+var uvIndex = function (lon,lat) {
+    apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={API key}";
+    apiKey = "ce1c48f71cdacb01f64b2ae634d3fb62";
+
+    fetch(apiURL)
+    .then(function(response){
+        response.json().then(function(data){
+            displayUvIndex(data);
+        });
+    });
+};
+
+var displayUvIndex = function(index){
+
+    var uvIndexEl = document.createElement("div");
+        uvIndexEl.textContent = "UV Index: ";
+    uvIndexEl.classList = "list-group-item";
+
+    indexValue = document.createElement("span");
+    indexValue.textContent = index.value;
+
+    if(index.value <=2){
+        indexValue.classList = "low"
+
+    }else if(index.value >2 && index.value<=8){
+        indexValue.classList = "moderate "
+
+    }else if(index.value >8){
+        indexValue.classList = "Very High"
+    };
+
+    uvIndexEl.appendChild(indexValue);
+    weatherContainerEl.appendChild(uvIndexEl);
+
+};
 
 // week weather
 
