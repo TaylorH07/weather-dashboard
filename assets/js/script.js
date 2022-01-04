@@ -3,23 +3,25 @@ var cityFormEl = document.querySelector("#city-form");
 var nameInputEl = document.querySelector("#city");
 var currentWeatherEl = document.querySelector("#current-weather-container");
 var citySearchEl = document.querySelector("#city-search")
+var forecastTitle = document.querySelector("#weather")
+var fiveDayContainerEl = document.querySelector("#five-day-container")
 
 var cities = "";
 var cityNames = [];
 
 //API key https://home.openweathermap.org/api_keys
-var apiKey = "ce1c48f71cdacb01f64b2ae634d3fb62";
+var apiKey = "87914ee1eadd9798d3e7ca94b91a62e8";
 
 // information from weather form
 var formSubmitHandler = function(event){
     event.preventDefault();
-    var city = cityInput.value.trim();
+    var city = nameInputEl.value.trim();
 
     if (city) {
-        cityWeather(city);
-        getWeekWeather(city);
+        getWeather(city);
+        fiveDayWeather(city);
         cityNames.unshift({city});
-        cityWeather.value = "";
+        nameInputEl.value = "";
     } else {
         alert("Enter a City");
     };
@@ -35,12 +37,12 @@ var citySave = function() {
 
 //get weather from weather API
 function getWeather(cityName){
-    var apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={API key}";
-    var apiKey = "ce1c48f71cdacb01f64b2ae634d3fb62";
+    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+    var apiKey = "87914ee1eadd9798d3e7ca94b91a62e8";
 
     fetch(apiURL).then(function(response){
         response.json().then(function(data){
-            displayWeather(data, city);
+            showWeather(data, city);
         });
     });
 };
@@ -85,8 +87,8 @@ var showWeather = function(citySearch, weather){
 //uv index
 
 var uvIndex = function (lon,lat) {
-    apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={API key}";
-    apiKey = "ce1c48f71cdacb01f64b2ae634d3fb62";
+    apiURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&cnt=1";
+    apiKey = "87914ee1eadd9798d3e7ca94b91a62e8";
 
     fetch(apiURL)
     .then(function(response){
@@ -120,9 +122,62 @@ var displayUvIndex = function(index){
 
 };
 
-// week weather
+// 5 day weather
+var fiveDayWeather = function (city){
+    var apiKey = "87914ee1eadd9798d3e7ca94b91a62e8";
+    var apiURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityNames + "&appid=" + apiKey;
 
-// display week of weather
+    fetch(apiURL).then(function(response){
+        response.json().then(function(data){
+            showFiveDay(data);
+        });
+    });
+};
+
+// display 5 day weather
+var showFiveDay = function(weather){
+    fiveDayContainerEl.textContent = "";
+    forecastTitle.textContent = "5-day Forecast:";
+
+    var forecast = weather.list;
+    for (var i = 5; i < forecast.length; i = i + 8) {
+        var dayForecast = forecast[i];
+
+        var forecastEl = document.createElement("div")
+        forecastEl. classList = " card bg-info text-light m-2";
+
+        var forecastDate = document.createElement("h4");
+            forecastDate.textContent = moment
+            .unix(dayForecast.dt)
+            .format("MMM D, YYYY");
+        forecastDate.classList = "card-header text-center";
+        forecastEl.appendChild(forecastDate);
+        
+        var weatherIcons = document.createElement("img");
+            weatherIcons.classList = "card-body text-center";
+            weatherIcons.setAttribute(
+                "src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
+        forecastEl.appendChild(weatherIcons);
+
+        var forecastTemp = document.createElement("span");
+            forecastTemp.classList = "card-body text-center";
+            forecastTemp.textContent = "Temperature: " + dayForecast.main.temp + " °F";
+        forecastEl.appendChild(forecastTemp);
+
+        var windForecastEL = document.createElement("span");
+            windForecastEL.classList = "card-body text-center";
+            windForecastEL.textContent = "Wind: " + dayForecast.wind.speed + " MPH";
+        forecastEl.appendChild(windForecastEL);
+
+        var humidforecastEl = document.createElement("span");
+            humidforecastEl.classList = "card-body text-center";
+            humidforecastEl.textContent = "Humidity: " + dayForecast.main.humidity + "  %";
+        forecastEl.appendChild(humidforecastEl);
+
+        fiveDayContainerEl.appendChild(forecastEl);
+    };
+
+};
 
 // display previous cities weather
 
