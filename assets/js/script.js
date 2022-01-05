@@ -1,5 +1,5 @@
 //DOM
-var cityFormEl = document.querySelector("#city-form");
+var cityFormEl = document.querySelector("#search-form");
 var nameInputEl = document.querySelector("#city");
 var currentWeatherEl = document.querySelector("#current-weather-container");
 var citySearchEl = document.querySelector("#city-search");
@@ -43,7 +43,7 @@ function getWeather(cityName){
 
     fetch(apiURL).then(function(response){
         response.json().then(function(data){
-            showWeather(data, city);
+            showWeather(data, cityName);
         });
     });
 };
