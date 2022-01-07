@@ -69,19 +69,18 @@ var showWeather = function(weather, citySearch){
 
     var tempEl = document.createElement("span");
         tempEl.textContent = "Temperature: " + weather.main.temp + " °F";
-    tempEl.classList = "list-group-item";
+        tempEl.classList = "list-group-item";
+    currentWeatherEl.appendChild(tempEl);
+
+    var windEl = document.createElement("span");
+        windEl.textContent = "Wind: " + weather.wind.speed + " MPH";
+        windEl.classList = "list-group-item";
+    currentWeatherEl.appendChild(windEl);
 
     var humidEl = document.createElement("span");
         humidEl.textContent = "Humidity: " + weather.main.humidity + " %";
-    humidEl.classList = "list-group-item";
-
-    var windEl = document.createElement("span");
-            windEl.textContent = "Wind: " + weather.wind.speed + " MPH";
-        windEl.classList = "list-group-item";
-    
-    currentWeatherEl.appendChild(tempEl);
+        humidEl.classList = "list-group-item";
     currentWeatherEl.appendChild(humidEl);
-    currentWeatherEl.appendChild(windEl);
     
     var lon = weather.coord.lon;
     var lat = weather.coord.lat;
