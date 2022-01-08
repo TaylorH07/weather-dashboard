@@ -154,27 +154,27 @@ var showFiveDay = function(weather){
             forecastDate.textContent = moment
             .unix(dayForecast.dt)
             .format("MMM D, YYYY");
-        forecastDate.classList = "card-header text-center";
+        forecastDate.classList = "card-header text-center w-header";
         forecastEl.appendChild(forecastDate);
         
         var weatherIcons = document.createElement("img");
-            weatherIcons.classList = "card-body text-center";
+            weatherIcons.classList = "day-text";
             weatherIcons.setAttribute(
                 "src", `https://openweathermap.org/img/wn/${dayForecast.weather[0].icon}@2x.png`);
         forecastEl.appendChild(weatherIcons);
 
         var forecastTemp = document.createElement("span");
-            forecastTemp.classList = "card-body text-center";
-            forecastTemp.textContent = "Temperature: " + dayForecast.main.temp + " °F";
+            forecastTemp.classList = "day-text temp-style";
+            forecastTemp.textContent =  dayForecast.main.temp + " °F";
         forecastEl.appendChild(forecastTemp);
 
         var windForecastEL = document.createElement("span");
-            windForecastEL.classList = "card-body text-center";
+            windForecastEL.classList = "day-text";
             windForecastEL.textContent = "Wind: " + dayForecast.wind.speed + " MPH";
         forecastEl.appendChild(windForecastEL);
 
         var humidforecastEl = document.createElement("span");
-            humidforecastEl.classList = "card-body text-center";
+            humidforecastEl.classList = "day-text";
             humidforecastEl.textContent = "Humidity: " + dayForecast.main.humidity + "  %";
         forecastEl.appendChild(humidforecastEl);
 

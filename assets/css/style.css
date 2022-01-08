@@ -1,7 +1,14 @@
+* {
+  padding: 0 20px;
+  text-align: center;
+  border-radius: 25px;
+}
+
 .w-search {
   width: 100%;
   display: flex;
   flex-direction: column;
+  background: whitesmoke;
 }
 
 .w-results {
@@ -18,6 +25,37 @@
 .list-group {
   display: flex;
   flex-direction: revert;
+  border-radius: none;
+}
+
+.day {
+  background: #ccebf5;
+  width: calc(20% - 10px);
+  margin: 0 5px 0 5px;
+  padding: 0 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  background: #c1e8f4;
+  font-size: 1rem;
+  color: #67a4b7;
+}
+
+.search-form {
+  padding: 5px;
+}
+
+.day-text {
+  margin: 0 auto 0 auto;
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+  padding: 0 5px 20px 5px;
+}
+
+.temp-style {
+  font-weight: bold;
 }
 
 #weather-results {
