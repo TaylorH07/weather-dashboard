@@ -17,10 +17,10 @@
     </header>
   
   
-    <main class="container">
-        <div class="row justify-content-md-center">
-            <div class="col col-md-4">
-                <div id="search-form" class="border border-dark">
+    <main>
+        <div class="justify-content-md-center">
+            <div>
+                <div id="search-form" class="w-search">
 
                     <h3 >Search By City</h3>
 
@@ -33,21 +33,23 @@
                     <div id="search-history-btns" class="search-history"></div>
                 </div>
 
-                <div class="col">
-                    <div id="current-weather" class="row border selected-city">
-                        <div class="col-12">
+                <div>
+                    <div id="current-weather" class="w-results selected-city">
+                        <div>
 
                             <h2 id="city-search">Current Weather:</h2>
-                            <div id="current-weather-container" class="list-group"></div>
+                            <div id="weather-results" class="list-group"></div>
 
                         </div>
 
                     </div>
                 </div>
 
-                <div id="week-forecast" class="week-forecast row border">
-                    <h2 id="weather" class="col-md-auto">5 Day Forecast: </h2>
-                    <div id="five-day-container" class="list-group"></div>
+                <div id="week-forecast" class="week-forecast border">
+                    <h2 id="weather">5 Day Forecast: </h2>
+                    <div class="">
+                        <div id="five-day-container" class="list-group"></div>
+                    </div>
                 </div>
                     
             </div>

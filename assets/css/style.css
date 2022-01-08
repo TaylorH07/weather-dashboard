@@ -1,3 +1,27 @@
-* {
-  padding: 30px;
+.w-search {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.w-results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.w-five-day {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.list-group {
+  display: flex;
+  flex-direction: revert;
+}
+
+#weather-results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }

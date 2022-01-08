@@ -148,8 +148,8 @@ var showFiveDay = function(weather){
         var dayForecast = forecast[i];
 
         var forecastEl = document.createElement("div")
-        forecastEl. classList = " card bg-info text-light m-2";
-
+        forecastEl. classList = "day";
+// old class "card bg-info text-light m-2"
         var forecastDate = document.createElement("h4");
             forecastDate.textContent = moment
             .unix(dayForecast.dt)
