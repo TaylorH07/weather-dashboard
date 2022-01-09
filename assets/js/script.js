@@ -1,7 +1,7 @@
 //DOM
 var cityFormEl = document.querySelector("#search-form");
 var nameInputEl = document.querySelector("#city");
-var currentWeatherEl = document.querySelector("#current-weather-container");
+var currentWeatherEl = document.querySelector("#current-weather");
 var citySearchEl = document.querySelector("#city-search");
 var forecastTitle = document.querySelector("#weather");
 var fiveDayContainerEl = document.querySelector("#five-day-container");
