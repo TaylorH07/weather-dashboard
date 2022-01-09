@@ -16,3 +16,5 @@ The user will also be able to select and view the weather forcast of the cities 
 - bootstrap
 - jquery
 - moment
+
+![Weather Dashboard SS](https://user-images.githubusercontent.com/92659821/148701044-10f515dc-8858-4eab-9834-797073446722.png)
